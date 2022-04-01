@@ -1,0 +1,23 @@
+{
+  "name": "nosql_social-network-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hak9292/NoSQL_Social-Network-API.git"
+  },
+  "author": "hak9292",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hak9292/NoSQL_Social-Network-API/issues"
+  },
+  "homepage": "https://github.com/hak9292/NoSQL_Social-Network-API#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.9"
+  }
+}
