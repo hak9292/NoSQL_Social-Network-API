@@ -12,7 +12,7 @@ const userController = {
                 res.json(dbUserData);
             })
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
     // Get a single user by id
@@ -23,7 +23,7 @@ const userController = {
             .populate('thoughts')
             .then((userings) => res.json(userings))
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
     // Create a new user
@@ -33,7 +33,7 @@ const userController = {
                 res.json(userings);
             })
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
     // Update a user
@@ -50,7 +50,7 @@ const userController = {
         )
         .then((userings) => res.json(userings))
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
     deleteUser(req, res) {
@@ -59,7 +59,7 @@ const userController = {
                 res.json({ message: 'User deleted.' });
             })
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
     // Add a friend to friend list
@@ -67,7 +67,7 @@ const userController = {
         User.findOneAndUpdate({ _id: req.params.userId }, { $addToSet: { friends: req.params.friendId } }, { new: true })
             .then((userings) => res.json(userings))
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
     // Remove a friend from friend list
@@ -87,7 +87,7 @@ const userController = {
             })
             .then((userings) => res.json(userings))
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
 };

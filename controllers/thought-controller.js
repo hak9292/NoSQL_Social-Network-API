@@ -1,6 +1,6 @@
 const { Thought, User } = require('../models');
 
-const errorHandler = (err) => {
+const errorHandler = (err, res) => {
     console.log(err);
     res.status(500).json({ message: err.message });
 };
@@ -13,7 +13,7 @@ const thoughtController = {
                 res.json(thinkings);
             })
             .catch((err) => {
-                errorHandler(err)
+                errorHandler(err, res)
             });
     },
     // Get single thought by :id
@@ -21,7 +21,7 @@ const thoughtController = {
         Thought.findOne({ _id: req.params.thoughtId })
             .then((thinkings) => res.json(thinkings))
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
     // Create a thought
@@ -44,7 +44,7 @@ const thoughtController = {
             })
             .then((thinkings) => res.json(thinkings))
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
     // Update a thought
@@ -61,7 +61,7 @@ const thoughtController = {
             })
             .then((thinkings) => res.json(thinkings))
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
     // Delete a thought
@@ -76,7 +76,7 @@ const thoughtController = {
             })
             .then((thinkings) => res.json(thinkings))
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
 
@@ -89,7 +89,7 @@ const thoughtController = {
         )
             .then((thinkings) => res.json(thinkings))
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
     // Remove reaction from a thought
@@ -99,9 +99,9 @@ const thoughtController = {
             { $pull: { reactions: { reactionId: req.params.reactionId } } },
             { runValidators: true, new: true }
         )
-            .then((thinkings) => res.json(dbThoughtData))
+            .then((thinkings) => res.json(thinkings))
             .catch((err) => {
-                errorHandler(err);
+                errorHandler(err, res);
             });
     },
 };
